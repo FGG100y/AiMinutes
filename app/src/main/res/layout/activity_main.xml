@@ -171,8 +171,8 @@
 
                 <SeekBar
                     android:id="@+id/seekBarHorizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="400dp"
+                    android:layout_height="48dp"
                     android:rotation="90"
                     android:max="100"
                     android:progress="50"

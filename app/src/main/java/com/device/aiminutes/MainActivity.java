@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -260,6 +261,19 @@ public class MainActivity extends AppCompatActivity {
         } else {
             layoutVertical.setVisibility(View.GONE);
             layoutHorizontal.setVisibility(View.VISIBLE);
+
+            splitterContainerHorizontal.getViewTreeObserver().addOnGlobalLayoutListener(
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        int height = splitterContainerHorizontal.getHeight();
+                        if (height > 0) {
+                            seekBarHorizontal.getLayoutParams().width = height;
+                            seekBarHorizontal.requestLayout();
+                            splitterContainerHorizontal.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        }
+                    }
+                });
         }
     }
 
