@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- 悬浮球 - 带状态 (长椭圆) -->
+    <LinearLayout
+        android:id="@+id/floatingBallWithStatus"
+        android:layout_width="200dp"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/floating_ball_status_background"
+        android:paddingHorizontal="16dp"
+        android:elevation="8dp">
+
+        <ImageView
+            android:id="@+id/ivStatusIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_btn_speak_now" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="转写中"
+            android:textSize="14sp"
+            android:textColor="@color/floating_ball_text" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textSize="14sp"
+            android:textColor="@color/floating_ball_text"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- 悬浮球 - 无状态 (短椭圆) -->
+    <LinearLayout
+        android:id="@+id/floatingBallNoStatus"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@drawable/floating_ball_no_status_background"
+        android:elevation="8dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_btn_speak_now"
+            app:tint="@color/white"
+            xmlns:app="http://schemas.android.com/apk/res-auto" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <!-- 顶部计时器 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/surface">
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textSize="24sp"
+            android:textColor="@color/text_primary"
+            android:fontFamily="monospace" />
+    </LinearLayout>
+
+    <!-- 中间文本显示区域 -->
+    <FrameLayout
+        android:id="@+id/textContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- 垂直布局（上下） -->
+        <LinearLayout
+            android:id="@+id/layoutVertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- 源语言文本 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvSourceText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:scrollbars="vertical"
+                    android:text="源语言文本将显示在这里"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@color/surface" />
+            </FrameLayout>
+
+            <!-- 可拖拽分割线（垂直布局时） -->
+            <RelativeLayout
+                android:id="@+id/splitterContainerVertical"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/surface">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_centerVertical="true"
+                    android:background="@color/divider" />
+
+                <SeekBar
+                    android:id="@+id/seekBarVertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressTint="@color/primary"
+                    android:thumbTint="@color/primary" />
+
+                <!-- 布局切换按钮和语种交换按钮 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="horizontal"
+                    android:background="@color/surface">
+
+                    <ImageButton
+                        android:id="@+id/btnSwapLanguages"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_rotate"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="交换语言"
+                        app:tint="@color/text_secondary" />
+
+                    <ImageButton
+                        android:id="@+id/btnToggleLayout"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@android:drawable/ic_menu_sort_by_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="切换布局"
+                        app:tint="@color/text_secondary" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- 目标语言文本 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvTranslatedText"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:scrollbars="vertical"
+                    android:text="翻译结果将显示在这里"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:background="@color/surface" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 水平布局（左右） -->
+        <LinearLayout
+            android:id="@+id/layoutHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <!-- 源语言文本 -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvSourceTextHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:scrollbars="vertical"
+                    android:text="源语言文本将显示在这里"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@color/surface" />
+            </FrameLayout>
+
+            <!-- 可拖拽分割线（水平布局时） -->
+            <RelativeLayout
+                android:id="@+id/splitterContainerHorizontal"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:background="@color/surface">
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/divider" />
+
+                <SeekBar
+                    android:id="@+id/seekBarHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:rotation="90"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressTint="@color/primary"
+                    android:thumbTint="@color/primary" />
+
+                <!-- 布局切换按钮和语种交换按钮 -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:background="@color/surface">
+
+                    <ImageButton
+                        android:id="@+id/btnSwapLanguagesHorizontal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@android:drawable/ic_menu_rotate"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="交换语言"
+                        app:tint="@color/text_secondary" />
+
+                    <ImageButton
+                        android:id="@+id/btnToggleLayoutHorizontal"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:src="@android:drawable/ic_menu_sort_by_size"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="切换布局"
+                        app:tint="@color/text_secondary" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- 目标语言文本 -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tvTranslatedTextHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:scrollbars="vertical"
+                    android:text="翻译结果将显示在这里"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:background="@color/surface" />
+            </FrameLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- 底部功能栏 -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:background="@color/surface">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <!-- 语种选择 -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <Spinner
+                    android:id="@+id/spinnerSourceLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:minWidth="100dp"
+                    android:background="@drawable/spinner_background" />
+
+                <ImageButton
+                    android:id="@+id/btnSwapLanguagesMain"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="4dp"
+                    android:src="@android:drawable/ic_menu_rotate"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="交换语言"
+                    app:tint="@color/primary" />
+
+                <Spinner
+                    android:id="@+id/spinnerTargetLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:minWidth="100dp"
+                    android:background="@drawable/spinner_background" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/divider" />
+
+            <!-- 发言人识别 -->
+            <ImageButton
+                android:id="@+id/btnSpeakerRecognition"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_btn_speak_now"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="发言人识别"
+                app:tint="@color/text_secondary" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/divider" />
+
+            <!-- 开始/暂停按钮 -->
+            <ImageButton
+                android:id="@+id/btnStartPause"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:src="@android:drawable/ic_media_play"
+                android:background="@drawable/circle_button_background"
+                android:contentDescription="开始/暂停" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/divider" />
+
+            <!-- 字号选择 -->
+            <Spinner
+                android:id="@+id/spinnerFontSize"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:minWidth="80dp"
+                android:background="@drawable/spinner_background" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/divider" />
+
+            <!-- 模式选择 -->
+            <Button
+                android:id="@+id/btnMode"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="全文模式"
+                android:textSize="14sp"
+                style="@style/Widget.Material3.Button.OutlinedButton" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:layout_marginHorizontal="8dp"
+                android:background="@color/divider" />
+
+            <!-- 白板按钮 -->
+            <ImageButton
+                android:id="@+id/btnWhiteboard"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_menu_edit"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="白板"
+                app:tint="@color/text_secondary" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

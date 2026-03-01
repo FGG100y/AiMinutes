@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/surface"
+    android:padding="16dp">
+
+    <!-- 字幕内容容器 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/subtitle_background"
+        android:padding="12dp">
+
+        <!-- 源语言字幕 -->
+        <TextView
+            android:id="@+id/tvSubtitleSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="源语言字幕"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:maxLines="3"
+            android:ellipsize="end" />
+
+        <!-- 分隔线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="8dp"
+            android:background="@color/divider" />
+
+        <!-- 目标语言字幕 -->
+        <TextView
+            android:id="@+id/tvSubtitleTranslated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="目标语言字幕"
+            android:textSize="18sp"
+            android:textColor="@color/text_secondary"
+            android:maxLines="3"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+</LinearLayout>

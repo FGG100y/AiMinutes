@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <!-- 字幕横幅 - 居中显示在顶部区域 -->
+    <LinearLayout
+        android:id="@+id/subtitleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:background="@drawable/subtitle_background"
+        android:padding="16dp"
+        android:elevation="8dp">
+
+        <!-- 源语言字幕 -->
+        <TextView
+            android:id="@+id/tvSubtitleSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="正在识别语音..."
+            android:textSize="20sp"
+            android:textColor="@color/text_primary"
+            android:maxLines="4"
+            android:ellipsize="end" />
+
+        <!-- 分隔线 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="8dp"
+            android:background="@color/divider" />
+
+        <!-- 目标语言字幕 -->
+        <TextView
+            android:id="@+id/tvSubtitleTranslated"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="正在翻译..."
+            android:textSize="20sp"
+            android:textColor="@color/text_secondary"
+            android:maxLines="4"
+            android:ellipsize="end" />
+    </LinearLayout>
+
+    <!-- 底部控制栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="#80000000">
+
+        <!-- 计时器 -->
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="monospace" />
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="1dp" />
+
+        <!-- 开始/暂停按钮 -->
+        <ImageButton
+            android:id="@+id/btnStartPause"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@android:drawable/ic_media_play"
+            android:background="@drawable/circle_button_background"
+            android:contentDescription="开始/暂停" />
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="1dp" />
+
+        <!-- 返回主界面按钮 -->
+        <ImageButton
+            android:id="@+id/btnBackToMain"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="返回主界面"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+</FrameLayout>
